@@ -20,10 +20,10 @@
 </body>
 </html>
 
-{{-- <script>
+<script>
 	$("document").ready(function(){
     setTimeout(function(){
         $(".message_succes").remove();
     }, 3000 );
 	});
-</script> --}}
+</script>
