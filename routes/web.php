@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// all products
 Route::get('products', [ProductsController::class, 'index'])->name('allProducts');
 
-Route::get('products/addToCart/{id}', [ProductsController::class, 'addToCart'])->name('addToCart');
+//for category 
+
+Route::get('products/category/{id}', [CategoriesController::class, 'getProductsByCategory'])->name('productsCategory');
+
+
+// for brand
+Route::get('products/brand/{id}', [BrandsController::class, 'getProductsByBrand'])->name('productsBrand');

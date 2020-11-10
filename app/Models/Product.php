@@ -13,11 +13,21 @@ class Product extends Model
 
     public function brands()
     {
-        return $this->belongsToMany('App\Models\Brand');
+        return $this->belongsToMany('App\Models\Brand', 'brand_product');
     }
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category');
+        return $this->belongsToMany('App\Models\Category', 'category_product');
+    }
+
+    public function getPriceAttribute($value)
+    {
+
+        return '$' . $value;
+    }
+    public function getDescriptionAttribute($value)
+    {
+        return ucfirst($value);
     }
 }
