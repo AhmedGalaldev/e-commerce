@@ -29,7 +29,7 @@
                         @foreach ($cartItems->items as $item)
                             <tr>
                                 <td class="cart_product">
-                                    <a href=""><img src="{{Storage::disk('local')->url('images/'.$item['data']->image)}}" alt="" style="max-width: 25%; max-height: 25%"></a>
+                                    <a href=""><img src={{asset('storage/'.$item['data']->image)}} alt="" style="max-width: 25%; max-height: 25%"></a>
                                 </td>
                                 <td class="cart_description">
                                     <h4><a href="">{{$item['data']->name}}</a></h4>

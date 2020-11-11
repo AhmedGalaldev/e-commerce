@@ -39,17 +39,13 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						@if (Auth::user())
-							
-						<h1>{{$userData->name}}</h1>
-						@endif
 						<h2 class="title text-center">Features Items</h2>
 						@foreach ($products as $product)
 							<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src={{Storage::disk('local')->url('images/'.$product->image)}} alt="" />
+											<img src={{asset('storage/'.$product->image)}} alt="" />
 											<h2>{{$product->price}}</h2>
 											<p>{{$product->name}}</p>
 											<a href="{{route('addToCart',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

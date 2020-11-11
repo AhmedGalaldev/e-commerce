@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PaymentController;
@@ -60,3 +61,22 @@ Route::get('payments/paymentPage', [PaymentController::class, 'showPaymentPage']
 //search products
 
 Route::get('products/search', [ProductsController::class, 'searchProducts'])->name('searchProducts');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+// admin routes
+
+Route::get('admin/products', [AdminController::class, 'index'])->name('adminProducts.index');
+Route::get('admin/create', [AdminController::class, 'create'])->name('adminProducts.create');
+Route::post('admin/products', [AdminController::class, 'store'])->name('adminProducts.store');
+Route::get('admin/products/{prodcut}/edit', [AdminController::class, 'edit'])->name('adminProducts.edit');
+Route::patch('admin/products/{prodcut}', [AdminController::class, 'update'])->name('adminProducts.update');
+Route::delete('admin/products/{product}', [AdminController::class, 'destroy'])->name('adminProducts.destroy');
+
+
+Route::get('admin/edit', function () {
+    return view('admin.edit');
+});

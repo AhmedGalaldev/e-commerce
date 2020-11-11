@@ -35,6 +35,7 @@
 									<li><a href="/dashboard"><i class="fa fa-lock"></i> Profile</a></li>
 								@else
 									<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+									<li><a href="/register"><i class="fa fa-lock"></i> Register</a></li>
 								@endif	
 								
 							</ul>
