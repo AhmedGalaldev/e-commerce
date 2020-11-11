@@ -69,12 +69,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // admin routes
 
-Route::get('admin/products', [AdminController::class, 'index'])->name('adminProducts.index');
-Route::get('admin/create', [AdminController::class, 'create'])->name('adminProducts.create');
-Route::post('admin/products', [AdminController::class, 'store'])->name('adminProducts.store');
-Route::get('admin/products/{prodcut}/edit', [AdminController::class, 'edit'])->name('adminProducts.edit');
-Route::patch('admin/products/{prodcut}', [AdminController::class, 'update'])->name('adminProducts.update');
-Route::delete('admin/products/{product}', [AdminController::class, 'destroy'])->name('adminProducts.destroy');
+
+Route::group(['middleware' => ['admin']], function () {
+    //
+
+    Route::get('admin/products', [AdminController::class, 'index'])->name('adminProducts.index');
+    Route::get('admin/create', [AdminController::class, 'create'])->name('adminProducts.create');
+    Route::post('admin/products', [AdminController::class, 'store'])->name('adminProducts.store');
+    Route::get('admin/products/{prodcut}/edit', [AdminController::class, 'edit'])->name('adminProducts.edit');
+    Route::patch('admin/products/{prodcut}', [AdminController::class, 'update'])->name('adminProducts.update');
+    Route::delete('admin/products/{product}', [AdminController::class, 'destroy'])->name('adminProducts.destroy');
+});
 
 
 Route::get('admin/edit', function () {

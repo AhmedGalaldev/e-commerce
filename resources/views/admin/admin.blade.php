@@ -25,6 +25,8 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+     
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -38,6 +40,12 @@
         </div>
       </div>
     </form>
+
+     @if (Auth::check())
+         <li class="nav-item d-none d-sm-inline-block">
+          <a href="{{ url('/dashboard') }}" class="nav-link">Profile</a>
+        </li> 
+      @endif
 
     
   </nav>
